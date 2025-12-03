@@ -103,7 +103,7 @@
 
 /* Hero section button overrides for better contrast */
 .hero .btn-primary {
-  background: white;
+  background: rgb(146, 39, 39);
   color: var(--color-primary);
 }
 
