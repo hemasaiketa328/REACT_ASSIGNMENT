@@ -1,0 +1,208 @@
+/* ==============================================
+   RESPONSIVE NAVIGATION - MOBILE FIRST
+   ============================================== */
+
+.navbar {
+  background-color: var(--color-bg);
+  box-shadow: var(--shadow-sm);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.nav-container {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: var(--spacing-md);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  color: var(--color-primary);
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+/* Mobile Menu Toggle Button */
+.menu-toggle {
+  display: block;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: var(--spacing-sm);
+  z-index: 1001;
+}
+
+.hamburger {
+  display: block;
+  width: 25px;
+  height: 2px;
+  background-color: var(--color-text);
+  position: relative;
+  transition: var(--transition);
+}
+
+.hamburger::before,
+.hamburger::after {
+  content: "";
+  position: absolute;
+  width: 25px;
+  height: 2px;
+  background-color: var(--color-text);
+  transition: var(--transition);
+}
+
+.hamburger::before {
+  top: -8px;
+}
+
+.hamburger::after {
+  bottom: -8px;
+}
+
+/* Hamburger animation when menu is open */
+.menu-toggle[aria-expanded="true"] .hamburger {
+  background-color: transparent;
+}
+
+.menu-toggle[aria-expanded="true"] .hamburger::before {
+  transform: rotate(45deg);
+  top: 0;
+}
+
+.menu-toggle[aria-expanded="true"] .hamburger::after {
+  transform: rotate(-45deg);
+  bottom: 0;
+}
+
+/* Mobile Navigation Links */
+.nav-links {
+  list-style: none;
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 70%;
+  max-width: 300px;
+  height: 100vh;
+  background-color: var(--color-bg);
+  box-shadow: var(--shadow-lg);
+  padding: var(--spacing-3xl) var(--spacing-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+  transition: right 0.3s ease;
+  z-index: 999;
+}
+
+.nav-links.active {
+  right: 0;
+}
+
+.nav-links li {
+  opacity: 0;
+  transform: translateX(20px);
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+}
+
+.nav-links.active li {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Stagger animation for menu items */
+.nav-links.active li:nth-child(1) {
+  transition-delay: 0.1s;
+}
+.nav-links.active li:nth-child(2) {
+  transition-delay: 0.2s;
+}
+.nav-links.active li:nth-child(3) {
+  transition-delay: 0.3s;
+}
+.nav-links.active li:nth-child(4) {
+  transition-delay: 0.4s;
+}
+
+.nav-links a {
+  font-size: var(--font-size-lg);
+  font-weight: 500;
+  color: var(--color-text);
+  padding: var(--spacing-sm) 0;
+  display: block;
+}
+
+.nav-links a:hover {
+  color: var(--color-primary);
+}
+
+/* Tablet and Up - Horizontal Navigation */
+@media (min-width: 768px) {
+  .menu-toggle {
+    display: none;
+  }
+
+  .nav-links {
+    position: static;
+    flex-direction: row;
+    width: auto;
+    height: auto;
+    background: none;
+    box-shadow: none;
+    padding: 0;
+    gap: var(--spacing-sm);
+  }
+
+  .nav-links li {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .nav-links a {
+    font-size: 0.875rem;
+    padding: var(--spacing-sm);
+  }
+}
+
+/* Large Desktop - Slightly more spacing */
+@media (min-width: 1280px) {
+  .nav-links {
+    gap: var(--spacing-md);
+  }
+
+  .nav-links a {
+    padding: var(--spacing-sm) var(--spacing-md);
+  }
+}
+
+/* ==============================================
+   FOOTER LAYOUT
+   ============================================== */
+
+.footer {
+  background-color: var(--color-bg-secondary);
+  padding: var(--spacing-xl) 0;
+  margin-top: var(--spacing-3xl);
+}
+
+.footer .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-md);
+  text-align: center;
+}
+
+/* Tablet and up - horizontal footer */
+@media (min-width: 768px) {
+  .footer .container {
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: left;
+  }
+}
